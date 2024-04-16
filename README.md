@@ -326,10 +326,9 @@ nano hello.sh # create a new file called hello.sh
 echo "Hello, World!"
 ```
 
-two lines of code, and you have a script! At the moment, although you have the
-contents of the script, it won't run. This is because the script is not
-executable. There's two options here, you can call the script with an explicit
-interpreter:
+Two lines, and you have a script! At the moment, although you have the script,
+it won't run. This is because the script is not executable. There's two options
+here, you can call the script with an explicit interpreter:
 
 ```bash
 bash hello.sh
@@ -432,3 +431,20 @@ Both `top` and `ps` query information in `/proc`, which is a pseudo-filesystem
 track information about the system. You can see the information in
 `/proc/cpuinfo`, `/proc/meminfo`, and `/proc/version`. This is a good way to see
 the information about the system, without needing to install additional tools.
+
+## What background tasks are running?
+
+`systemctl` is the service manager for linux. You can use this to see what
+services are running, and to start, stop, and restart services. We won't really
+touch on this in this course, but it's good to know about. There may be times
+when you need to restart a service, or check the status of a service. You can do
+this by running `systemctl status servicename`, `systemctl start servicename`,
+or `systemctl stop servicename`.
+
+Alongside services, you may have cron jobs running. These are scheduled tasks
+which run at a given time. You can write your own scripts, and have them run at
+specific times using `crontab -e`. You can see the cron jobs for a user by
+running `crontab -l`. This will show you the cron jobs for the current user. You
+can also see the cron jobs for all users by looking in `/etc/cron.d/` and
+`/etc/cron.daily/`. You can also see the cron jobs for the system by looking in
+`/etc/crontab`.
